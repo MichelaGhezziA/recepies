@@ -1,5 +1,5 @@
 var ingridient = {
-    quantity:"",
+    quantity: "",
     measureUnit: "",
-    name:"",
-}
+    name: ""
+};
