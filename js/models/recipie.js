@@ -1,4 +1,4 @@
-var recepie = {
+var recipie = {
     ingredients: {},
     name: "",
     description: "",
@@ -8,6 +8,6 @@ var recepie = {
     cookingTime: "",
     difficulty: 0,
     cost: 0,
-    rating: 0,
+    rating:0,
     numVotes: 0
-};
+}

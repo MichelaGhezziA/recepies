@@ -1,72 +1,68 @@
-// this is the controller for the index view (recepie listing)
-
 /*
-
-- ottenere la lista di ricetta dal database (ev. con un ordine)
-  - per ogni ricetta:
-    - creare un elemento completo HTML da apporre in pagina
-    - completare le informazioni dell'elemente dall'oggetto ricevuta da DB
+ - ottenere lista ricette database
+ - per ogni ricetta: 
+    - creare un elemento completo HTML da apporre nell pagina
+    - completare le informazioni dell'elemento dall'oggetto ricevuto da DB
     - apporlo in pagina
-
 */
 
 var db = firebase.firestore();
 
-function loadRecepies(){
+function loadRecipies(){
+    db.collection('recipies').get().then(function(snapshot){
 
-  db.collection('recepies').onSnapshot(function(snapshot){
-    console.log( "Datas Snapshot:", snapshot );
+        console.log("Datas Snapshot:", snapshot );
+    
+        snapshot.forEach(function(item){
+            console.log("Elements data: ", item.data());
+            var recipieElementFromDB = item.data();
 
-    clearContainer();
-  
-    snapshot.forEach( item => {
-      console.log("Element data: ", item.data());
-      var recepieElementFromDb = item.data();
-      var recepieIdFromDb = item.id;
-      addRecepie(recepieElementFromDb,recepieIdFromDb);
-    } );
-  
-  });
-
+            var recipieIdFromDb = item.id;
+            addRecipie(recipieElementFromDB, recipieIdFromDb);
+        })
+    
+    });
 }
 
 function generateLinkFromId(id){
-  var destinationPage = 'recepie.html';
-  destinationPage += '?id='+id;
-  return destinationPage;
+    var destinationPage = 'recipie.html';
+
+    destinationPage += '?id=' +id;
+    return destinationPage;
 }
 
 function clearContainer(){
-  $('#recepies-list-container').empty();
+    $('#recipie_list_container').empty();
 }
 
-function addRecepie(recepieItem, recepieId){
-  var $sourceElement = $('#repecie-source-container .repecie-source');
-  var $newElement = $sourceElement.clone();
-  
-  var title = recepieItem.name;
-  $newElement.find('h4.card-title a').text(title);
+function addRecipie(recipieItem, recipieId){
 
-  var difficulty = recepieItem.difficulty;
-  $newElement.find('h5').text('Level: '+difficulty);
+    var $sourceElement = $('#recipie_source_container .recipie_source');
+    var $newElement = $sourceElement.clone();
 
-  var description = recepieItem.description;
-  var shortDescription = '';
-  if( description != null && description != undefined ){
-    shortDescription = description.substring(0,100);
-  }
-  $newElement.find('.card-text').text(shortDescription);
+    var title = recipieItem.name;
+    $newElement.find('h4.card-title a').text(title);
 
-  var link = generateLinkFromId(recepieId);
-  $newElement.find('.image-link').attr('href',link);
-  $newElement.find('h4.card-title a').attr('href',link);
+    var difficulty = recipieItem.difficulty;
+    $newElement.find('h5').text('Level: '+ difficulty);
 
-  var rating = parseInt(recepieItem.rating);
-  $newElement.find('.card-footer .text-muted').append(rating);
+    var description = recipieItem.description;
+    var shortDescription = '';
 
-  $('#recepies-list-container').append($newElement);
+    if (description != null && description != undefined){
+        shortDescription = description.substring(0, 100);
+    }
+
+    $newElement.find('.card-text').text(shortDescription);
+
+    var link = generateLinkFromId(recipieId);
+    $newElement.find('.image-link').attr('href', link);
+    $newElement.find('h4.card-title a').attr('href', link);
+
+    var rating = parseInt(recipieItem.rating);
+    $newElement.find('.card-footer .text-muted').append(rating);
+
+    $('#recipie_list_container').append($newElement);
 }
 
-// load data
-
-loadRecepies();
+loadRecipies();

@@ -2,25 +2,25 @@
 
 var db = firebase.firestore();
 
-function saveRecepie(event){
+function saveRecipie(event){
     event.preventDefault();
     
-    var currentRecepie = {};
-    Object.assign(currentRecepie, recepie);
+    var currentRecipie = {};
+    Object.assign(currentRecipie, recipie);
 
-    currentRecepie.name = $('#name').val();
-    currentRecepie.people = $('#people').val();
-    currentRecepie.preparationTime = $('#preparationTime').val();
-    currentRecepie.cookingTime = $('#cookingTime').val();
-    currentRecepie.difficulty = $('#difficulty').val();
-    currentRecepie.cost = $('#cost').val();
-    currentRecepie.description = $('#description').val();
+    currentRecipie.name = $('#name').val();
+    currentRecipie.people = $('#people').val();
+    currentRecipie.preparationTime = $('#preparationTime').val();
+    currentRecipie.cookingTime = $('#cookingTime').val();
+    currentRecipie.difficulty = $('#difficulty').val();
+    currentRecipie.cost = $('#cost').val();
+    currentRecipie.description = $('#description').val();
 
-    console.log(currentRecepie);
+    console.log(currentRecipie);
 
-    db.collection('recepies')
+    db.collection('recipies')
     .doc()
-    .set(currentRecepie)
+    .set(currentRecipie)
     .then(function() {
         console.log("Document successfully written!");
         alert('Yes ;)');

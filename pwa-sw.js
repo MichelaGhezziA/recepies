@@ -1,23 +1,30 @@
 // This is the "Offline copy of pages" service worker
 
-const CACHE = "pwabuilder-offline";
+const CACHE = "recipies-offline";
 
 // TODO: replace the following with the correct offline fallback page i.e.: const offlineFallbackPage = "index.html";
-const offlineFallbackPage = "ToDo-replace-this-name.html";
+const offlineFallbackPage = "index.html";
+
+const OFFLINE_PAGES = [
+  'index.html',
+  'login.html',
+  'profile.html',
+  'recipie.html',
+  'search.html',
+  'signup.html'
+]
 
 // Install stage sets up the index page (home page) in the cache and opens a new cache
 self.addEventListener("install", function (event) {
   console.log("[PWA Builder] Install Event processing");
 
   event.waitUntil(
-    caches.open(CACHE).then(function (cache) {
+    caches
+    .open(CACHE)
+    .then(cache => {
       console.log("[PWA Builder] Cached offline page during install");
-
-      if (offlineFallbackPage === "ToDo-replace-this-name.html") {
-        return cache.add(new Response("TODO: Update the value of the offlineFallbackPage constant in the serviceworker."));
-      }
       
-      return cache.add(offlineFallbackPage);
+      return cache.addAll(OFFLINE_PAGES);
     })
   );
 });

@@ -1,55 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
 
-  <!-- PROFILE Bootstrap Layout from https://bootsnipp.com/snippets/4Mm5R -->
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Recepies, l'app per scrivere e condividere le tue ricette.">
-  <meta name="author" content="Michela Ghezzi <info@michela.in>">
+  <meta name="description" content="ReciPies, l'app per scrivere e condividere le tue ricette.">
+  <meta name="author" content="Michela ghezzi">
 
-  <title>Bare - Start Bootstrap Template</title>
+  <title>ReciPies</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> 
 
+  <!-- Custom styles for this template -->
+  <link href="css/shop-homepage.css" rel="stylesheet">
   <link href="css/main.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Dosis:800" rel="stylesheet">
 
-</head>
+  <!-- FontAwesome core CSS -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+ 
 
 <body>
-
+  
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand logo-style" href="index.html">RecePies</a>
+      <a class="navbar-brand logo-style" href="index.html">ReciPies</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home
-              <span class="sr-only">(current)</span>
+          <li class="nav-item ">
+            <a class="nav-link" href="index.html">
+              <i class="fas fa-home"></i>
+              Home
+              </a>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="create.html">
-              <i class="fas fa-utensil-spoon"></i> Crea Ricetta
+              <i class="fas fa-utensil-spoon"></i>
+              Crea Ricetta
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="search.html">
-              <i class="fas fa-search"></i> Cerca
+              <i class="fas fa-search"></i>
+              Cerca
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="profile.html">
-              <i class="fas fa-user"></i> Il mio profilo
+              <i class="fas fa-user"></i>
+              Il mio profilo
+              <span class="sr-only">(current)</span>
             </a>
           </li>
         </ul>
@@ -115,7 +122,7 @@
 
         <ul class="nav nav-tabs">
           <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#profile">Home</a></li>
-          <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#recepies">Menu 1</a></li>
+          <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#recipies">Menu 1</a></li>
           <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#reviews">Menu 2</a></li>
         </ul>
 
@@ -167,8 +174,8 @@
           </div>
           <!--/tab-pane-->
 
-          <div class="tab-pane" id="recepies">
-            <p>Recepies</p>
+          <div class="tab-pane" id="recipies">
+            <p>Recipies</p>
           </div>
 
           <!--/tab-pane-->
@@ -186,19 +193,17 @@
     <!--/row-->
   </div>
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-    </div>
-    <!-- /.container -->
-  </footer>
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="js/controllers/profile.js"></script>
-
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+    <!-- JavaScript -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-firestore.js"></script>
+  
+    <script src="js/firebase.js"></script>
+  
+    <script src="js/controllers/profile.js"></script>
 </body>
 
 </html>
